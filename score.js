@@ -5,7 +5,8 @@ function onScoreUpdate(dropPosition, bounciness, size, bucketLabel) {
 }
 
 function runAnalysis() {
-  const testSetSize = 80;
+  if(!outputs.length > 0)return alert("Plase Enter Dataset ");
+  const testSetSize = 100;
   const Ks = 10;
 
   let bestK = 0;
@@ -27,7 +28,6 @@ function runAnalysis() {
         .divide(testSetSize)
         .value();
 
-
       // console.log(
       //   "for feature that is:",
       //   feature,
@@ -45,7 +45,7 @@ function runAnalysis() {
     });
   });
 
-  console.log(`Best Feature: ${featureName[bestFeature]}, Best K: ${bestK}, Best Accuracy: ${(bestAccuracy * 100).toFixed(2)}%`);
+  alert(`Best Feature: ${featureName[bestFeature]}, Best K: ${bestK}, Best Accuracy: ${(bestAccuracy * 100).toFixed(2)}%`);
   fitFinalModel(bestFeature, bestK);
 }
 
